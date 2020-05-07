@@ -1,4 +1,3 @@
 package demo.api.assignable;
 
-public interface FirstInterface {
-}
+public interface FirstInterface {}

@@ -1,4 +1,3 @@
 package demo.api.assignable;
 
-public interface UnrelevantInterface {
-}
+public interface UnrelevantInterface {}

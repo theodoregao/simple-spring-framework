@@ -1,4 +1,3 @@
 package demo.api.assignable;
 
-public class UnrelevantClass {
-}
+public class UnrelevantClass {}

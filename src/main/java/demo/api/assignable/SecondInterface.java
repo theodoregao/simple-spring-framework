@@ -1,4 +1,3 @@
 package demo.api.assignable;
 
-public interface SecondInterface extends FirstInterface {
-}
+public interface SecondInterface extends FirstInterface {}

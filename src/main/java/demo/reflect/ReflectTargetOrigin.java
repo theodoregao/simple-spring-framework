@@ -1,8 +1,8 @@
 package demo.reflect;
 
 public class ReflectTargetOrigin {
-    String defaultMember = "default";
-    public String publicMember = "public";
-    protected String protectedMember = "protected";
-    private String privateMember = "private";
+  private final String privateMember = "private";
+  public String publicMember = "public";
+  protected String protectedMember = "protected";
+  String defaultMember = "default";
 }

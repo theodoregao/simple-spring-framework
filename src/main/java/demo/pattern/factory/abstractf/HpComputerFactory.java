@@ -6,13 +6,13 @@ import demo.pattern.factory.entity.Keyboard;
 import demo.pattern.factory.entity.Mouse;
 
 public class HpComputerFactory implements ComputerFactory {
-    @Override
-    public Mouse createMouse() {
-        return new HpMouse();
-    }
+  @Override
+  public Mouse createMouse() {
+    return new HpMouse();
+  }
 
-    @Override
-    public Keyboard createKeyboard() {
-        return new HpKeyboard();
-    }
+  @Override
+  public Keyboard createKeyboard() {
+    return new HpKeyboard();
+  }
 }
