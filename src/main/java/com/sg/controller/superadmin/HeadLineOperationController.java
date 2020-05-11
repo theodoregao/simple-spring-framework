@@ -13,7 +13,8 @@ import java.util.List;
 @Controller
 public class HeadLineOperationController {
 
-  @Autowired private HeadLineService headLineService;
+  @Autowired(value = "HeadLineServiceImpl")
+  private HeadLineService headLineService;
 
   public Result<Boolean> addHeadLine(HttpServletRequest req, HttpServletResponse resp) {
     // TODO: implement extract the parameters from req
