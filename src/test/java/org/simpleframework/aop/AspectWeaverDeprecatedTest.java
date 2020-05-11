@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.simpleframework.core.BeanContainer;
 import org.simpleframework.inject.DependencyInjector;
 
-public class AspectWeaverTest {
+public class AspectWeaverDeprecatedTest {
 
   @DisplayName("test doAop method")
   @Test
   public void doAopTest() {
     BeanContainer beanContainer = BeanContainer.getInstance();
     beanContainer.loadBeans("com.sg");
-    new AspectWeaver().doAop();
+    new AspectWeaverDeprecated().doAop();
     new DependencyInjector().doIoc();
 
     HeadLineOperationController headLineOperationController =

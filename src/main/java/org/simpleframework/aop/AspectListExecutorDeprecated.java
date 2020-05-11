@@ -8,16 +8,15 @@ import org.simpleframework.util.ValidationUtil;
 
 import java.lang.reflect.Method;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
-public class AspectListExecutor implements MethodInterceptor {
+public class AspectListExecutorDeprecated implements MethodInterceptor {
 
   private final Class<?> targetClass;
 
   @Getter private final List<AspectInfo> sortedAspectInfoList;
 
-  public AspectListExecutor(Class<?> targetClass, List<AspectInfo> sortedAspectInfoList) {
+  public AspectListExecutorDeprecated(Class<?> targetClass, List<AspectInfo> sortedAspectInfoList) {
     this.targetClass = targetClass;
     Collections.sort(sortedAspectInfoList, (a, b) -> a.getOrderIndex() - b.getOrderIndex());
     this.sortedAspectInfoList = sortedAspectInfoList;
@@ -27,9 +26,8 @@ public class AspectListExecutor implements MethodInterceptor {
   public Object intercept(Object object, Method method, Object[] args, MethodProxy methodProxy)
       throws Throwable {
     Object returnValue = null;
-    collectAccurateMatchedAspectList(method);
     if (ValidationUtil.isEmpty(sortedAspectInfoList)) {
-      return methodProxy.invokeSuper(object, args);
+      return returnValue;
     }
     try {
       invokeBeforeAdvice(method, args);
@@ -39,19 +37,6 @@ public class AspectListExecutor implements MethodInterceptor {
       invokeAfterThrowingAdvice(method, args, e);
     }
     return returnValue;
-  }
-
-  private void collectAccurateMatchedAspectList(Method method) {
-    if (ValidationUtil.isEmpty(sortedAspectInfoList)) {
-      return;
-    }
-    Iterator<AspectInfo> it = sortedAspectInfoList.iterator();
-    while (it.hasNext()) {
-      AspectInfo aspectInfo = it.next();
-      if (!aspectInfo.getPointcutLocator().accurateMatches(method)) {
-        it.remove();
-      }
-    }
   }
 
   private void invokeBeforeAdvice(Method method, Object[] args) throws Throwable {

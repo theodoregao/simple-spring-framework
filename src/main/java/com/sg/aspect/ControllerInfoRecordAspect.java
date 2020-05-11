@@ -4,12 +4,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.simpleframework.aop.annotation.Aspect;
 import org.simpleframework.aop.annotation.Order;
 import org.simpleframework.aop.aspect.DefaultAspect;
-import org.simpleframework.core.annotation.Controller;
 
 import java.lang.reflect.Method;
 
 @Slf4j
-@Aspect(value = Controller.class)
+// @AspectDeprecated(value = Controller.class)
+@Aspect(pointcut = "within(com.sg.controller.superadmin.*)")
 @Order(10)
 public class ControllerInfoRecordAspect extends DefaultAspect {
 

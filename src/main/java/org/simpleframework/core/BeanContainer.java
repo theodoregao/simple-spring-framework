@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.simpleframework.aop.annotation.Aspect;
+import org.simpleframework.aop.annotation.AspectDeprecated;
 import org.simpleframework.core.annotation.Component;
 import org.simpleframework.core.annotation.Controller;
 import org.simpleframework.core.annotation.Repository;
@@ -21,7 +22,12 @@ public class BeanContainer {
 
   private static final List<Class<? extends Annotation>> BEAN_ANNOTATIONS =
       Arrays.asList(
-          Component.class, Controller.class, Service.class, Repository.class, Aspect.class);
+          Component.class,
+          Controller.class,
+          Service.class,
+          Repository.class,
+          AspectDeprecated.class,
+          Aspect.class);
   private final Map<Class<?>, Object> beanMap = new ConcurrentHashMap<>();
 
   private boolean loaded = false;
